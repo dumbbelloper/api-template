@@ -1,1 +1,2 @@
-
+spring:
+  # todo 운영 DB 연결
