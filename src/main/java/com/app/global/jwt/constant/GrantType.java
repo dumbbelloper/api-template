@@ -10,5 +10,5 @@ public enum GrantType {
         this.type = type;
     }
 
-    private String type;
+    private final String type;
 }
