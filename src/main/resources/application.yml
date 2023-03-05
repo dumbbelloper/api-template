@@ -45,3 +45,8 @@ kakao:
     id: 64b28a61aea45be430a343ed6768e7b5
     secret: H6lOOdKRopk90cLZWsczwhaZCVVqPHpC
     redirect-uri: http://localhost:8080/oauth/kakao/callback
+
+token:
+  secret: and0LXRva2VuLXNlY3JldA== # 임의의 문자열
+  access-token-expiration-time: 900000 # 15분 1000(ms) x 60(s) x 15(m)
+  refresh-token-expiration-time: 1209600000 # 2주 1000(ms) x 60 (s) x 60(m) x 24(h) x 14(d)
