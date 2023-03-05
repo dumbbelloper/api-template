@@ -5,9 +5,11 @@ import com.app.domain.member.constant.Role;
 import com.app.domain.member.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @Builder
+@ToString
 public class OAuthAttributes {
     private String name;
     private String email;
