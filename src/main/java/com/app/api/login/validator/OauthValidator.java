@@ -10,21 +10,8 @@ import org.springframework.util.StringUtils;
 
 @Service
 public class OauthValidator {
-    public void validateAuthorization(String authorizationHeader) {
-        //1. Authorization header 필수 체크
-        if (!StringUtils.hasText(authorizationHeader)) {
-            throw new AuthenticationException(ErrorCode.NOT_EXISTS_AUTHORIZATION);
-        }
-
-        //2. Bearer 체크
-        String[] authorizations = authorizationHeader.split(" ");
-        if (authorizations.length < 2 || (!GrantType.BEARER.getType().equals(authorizations[0]))) {
-            throw new AuthenticationException(ErrorCode.NOT_VALID_BEARER_GRANT_TYPE);
-        }
-    }
-
     public void validateMemberType(String memberType) {
-        if(!MemberType.isMemberType(memberType)) {
+        if (!MemberType.isMemberType(memberType)) {
             throw new BusinessException(ErrorCode.INVALID_MEMBER_TYPE);
         }
     }
