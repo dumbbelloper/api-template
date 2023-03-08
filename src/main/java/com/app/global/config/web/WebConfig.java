@@ -1,5 +1,6 @@
 package com.app.global.config.web;
 
+import com.app.global.intercepter.AdminAuthorizationIntercepter;
 import com.app.global.intercepter.AuthenticateInterceptor;
 import com.app.global.resolver.memberInfo.MemberInfoArgumentResolver;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +20,11 @@ public class WebConfig implements WebMvcConfigurer {
     private final AuthenticateInterceptor authenticateInterceptor;
     private final MemberInfoArgumentResolver memberInfoArgumentResolver;
 
+    private final AdminAuthorizationIntercepter adminAuthorizationIntercepter;
+
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(memberInfoArgumentResolver);
-
     }
 
     @Override
@@ -31,6 +33,10 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(1)
                 .addPathPatterns("/api/**")
                 .excludePathPatterns("/api/oauth/login", "api/access-token/issue", "/api/logout", "api/health");
+
+        registry.addInterceptor(adminAuthorizationIntercepter)
+                .order(2)
+                .addPathPatterns("/api/admin/**");
     }
 
     @Override
